@@ -1,0 +1,33 @@
+git config --global user.name "Ridwan Nugraha"
+
+git init
+
+git status
+
+git diff
+
+git add file.html
+
+git commit -m "Message Commit"
+
+git log --oneline
+
+git checkout file.html|logref
+
+git reset --mixed|--hard logref
+
+git branch
+
+git branch newfolder
+
+git branch -m newfolder renamefolder
+
+git branch -d renamefolder
+
+git checkout renamefolder
+
+git merge renamefolder
+
+git remote add origin https://github.com/Devrid/Laravel-Example.git
+
+git push -u origin master
