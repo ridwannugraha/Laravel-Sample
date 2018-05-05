@@ -7,6 +7,7 @@ use App\Rules\StatusUserRule;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -58,6 +59,24 @@ class LoginController extends Controller
         return [
             'exists' => 'Email Not found Click <a href="#">Register</a>',
         ];
+    }
+    
+    /**
+     * Handle a login request to the application.
+     *
+     * @param  LoginRequest  $request
+     * @return Response
+     */
+    public function postLogin(Request $request)
+    {
+
+      if (Auth::attempt(['email' => $request->email, 'password' => $request->password])){
+            return redirect('home');
+      }
+
+      return redirect()->back()->withErrors([
+          'email' => 'The credentials you entered did not match our records. Try again?',
+      ]);
     }
 
 }
